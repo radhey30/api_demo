@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+let tasks = [];
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
@@ -11,6 +12,7 @@ app.listen(5000, () => {
 
 app.post("/add", (req, res) => {
   console.log(req.body);
+  console.log(tasks);
   if (req.body.task == null) {
     res.status(400).json({
       data: "task name required",
@@ -25,6 +27,7 @@ app.post("/add", (req, res) => {
     data: "User added successfully",
     tasks: req.body,
   });
+  tasks.push(req.body.task);
 });
 
 module.exports = app;

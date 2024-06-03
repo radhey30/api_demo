@@ -10,8 +10,10 @@ app.listen(5000, () => {
 });
 
 app.post("/add", (req,res) => {
+    console.log(req.body);
     res.status(200).json({
-        "data": "User added successfully"
+        "data": "User added successfully",
+        "tasks": req.body
     });
 })
 

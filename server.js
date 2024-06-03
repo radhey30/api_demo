@@ -1,7 +1,3 @@
-const axios = require('axios');
-const vercelToken = "9RMk9jbWL8KGAXLldmxPxdI1";
-const apiEndPt = "https://api.vercel.com/v9/projects";
-
 const express = require("express");
 const app = express();
 
@@ -12,5 +8,11 @@ app.get("/", (req, res) => {
 app.listen(5000, () => {
   console.log("Running on port 5000.");
 });
+
+app.post("/add", (req,res) => {
+    res.status(200).json({
+        "data": "User added successfully"
+    });
+})
 
 module.exports = app;

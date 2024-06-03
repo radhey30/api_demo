@@ -16,7 +16,7 @@ app.post("/add", (req, res) => {
       data: "task name required",
     });
   }
-  if(req.body.task.trim() == "") {
+  else if(req.body.task.trim() == "") {
     res.status(400).json({
         data: "enter proper task name",
       });

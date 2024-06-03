@@ -9,12 +9,22 @@ app.listen(5000, () => {
   console.log("Running on port 5000.");
 });
 
-app.post("/add", (req,res) => {
-    console.log(req.body);
-    res.status(200).json({
-        "data": "User added successfully",
-        "tasks": req.body
+app.post("/add", (req, res) => {
+  console.log(req.body);
+  if (req.body.task == null) {
+    res.status(400).json({
+      data: "task name required",
     });
-})
+  }
+  if(req.body.task.trim() == "") {
+    res.status(400).json({
+        data: "enter proper task name",
+      });
+  }
+  res.status(200).json({
+    data: "User added successfully",
+    tasks: req.body,
+  });
+});
 
 module.exports = app;

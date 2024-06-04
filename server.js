@@ -1,17 +1,8 @@
 const express = require("express");
-const sql = require("@vercel/postgres");
 const app = express();
-let tasks = [];
 app.use(express.json());
 app.get("/", async (req, res) => {
-  try {
-    const result =
-      await sql`CREATE TABLE Pets ( Name varchar(255), Owner varchar(255) );`;
-      console.log("result = " + result);
-    return res.send("Express on Vercel");
-  } catch (error) {
-    return res.send("Express on Vercel ok" + error);
-  }
+  return res.send("Express on Vercel");
 });
 
 app.listen(5000, () => {
@@ -34,7 +25,6 @@ app.post("/add", (req, res) => {
     data: "User added successfully",
     tasks: req.body,
   });
-  tasks.push(req.body.task);
 });
 
 module.exports = app;
